@@ -1,0 +1,7 @@
+version: '3'
+services:
+        db:
+                #image: amazondb
+                build: ./db
+                ports:
+                        - 5433:5432

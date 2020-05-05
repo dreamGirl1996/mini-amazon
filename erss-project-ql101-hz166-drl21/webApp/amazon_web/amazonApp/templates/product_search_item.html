@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Result: </h2>
+  {% if avail_products|length > 0 %}
+    {%  for order in avail_products %}
+        <div>
+            <article class="content-section">
+                <h2 class="article-title">Product name lalala: {{ order.product_name }}</h2>
+                <p class="article-content">Current quantity: {{ order.product_quantity }}</p>
+                <p class="article-content">Product description: {{ order.product_desc }}</p>
+<!--                {% if order.product_name="apple" %}-->
+                    <p class="article-content"><img src="{% static  'image/apple.jpg'%}" ></p>
+                {% elseif order.product_name="banana" %}
+                    <div class="article-content"><img src="{% static  'image/banana.jpg'%}" ></div>
+                {% elseif order.product_name="iphone" %}
+                    <div class="article-content"><img src="{% static  'image/iphone.jpg'%}" ></div>
+                {% endif %}
+
+            </article>
+        </div>
+        <a href="#">
+            <button>Buy</button>
+        </a>
+         <a href="{% url 'amazon-home' %}">
+            <button>Back</button>
+        </a>
+    {% endfor %}
+    <br>
+{% else %}
+  <h6>There is no such product.</h6>
+    <div>
+        <a href="{% url 'amazon-home' %}">
+            <button>Back</button>
+        </a>
+
+    </div>
+{% endif %}
+{% endblock content %}

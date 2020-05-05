@@ -1,0 +1,9 @@
+
+{% extends "base.html" %}
+{% block content %}
+<form method = "get" action="/matching_prods/">
+    {% csrf_token %}
+    <input type="text" id="search_st" name="search_st">
+    <button type = "submit">Submit</button>
+</form>
+{% endblock content %}

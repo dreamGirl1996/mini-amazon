@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Amazon Home Page</h1>
+        <div class="media-body">
+      <div class="article-metadata">
+          <embed src="/static/music/play.mp3" allow="autoplay" hidden="true" autostart="true"/>
+          {% if user.is_authenticated %}
+                 <br>
+                     Hi customer!
+               <br><a class="mr-2" href="{% url 'search' %}">Search and buy product</a>
+               <br><a class="mr-2" href="{% url 'track' %}">Track package info</a>
+               <br><a class="mr-2" href="{% url 'allOrder' user.pk %}">Order history</a>
+        {% else %}
+               <br>
+                     Welcome! Have no account?
+               <a class="nav-item nav-link" href="{% url 'register' %}">Please register!</a>
+               <br>
+                     Already have an account?
+               <a class="nav-item nav-link" href="{% url 'login' %}">Please login!</a>
+           {% endif %}
+      </div>
+    </div>
+{% endblock content %}

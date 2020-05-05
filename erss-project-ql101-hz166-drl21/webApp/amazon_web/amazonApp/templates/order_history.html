@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for order in orders %}
+        {% if order.user_id == user %}
+         <ul class="list-group">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href=" ">Owner: {{ order.user_id.username}}</a >
+              <small class="text-muted">Time: {{ order.order_created_time|date:"F d, Y H:i:s" }}</small>
+            </div>
+
+<!--            <h2><a class="article-title" href="{% url 'RideApp:order-detail' order.id %}">Ship to: {{ order.dst }}</a ></h2>-->
+
+              <p class="article-content">Order ships to : {{ order.buyer_x }} {{ order.buyer_y }}</p >
+              <p class="article-content">This order has {{ order.product_num }} products</p >
+              <p class="article-content">Order status: {{ order.status }}</p >
+          </div>
+         </ul>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

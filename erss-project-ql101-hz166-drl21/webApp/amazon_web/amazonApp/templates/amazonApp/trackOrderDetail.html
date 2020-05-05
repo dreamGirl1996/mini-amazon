@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Result: </h2>
+  {% if find_products|length > 0 %}
+    {%  for order in find_products %}
+        <div>
+            <article class="content-section">
+
+                <h2 class="article-title">Order ID: {{ order.ship_id }}</h2>
+                <p class="article-content">Product status: {{ order.status }}</p>
+                {% if order.product_name == "apple" %}
+                    <p class="article-content"><img src="/static/image/apple.jpg" width="60" height="50"></p>
+                {% elif order.product_name == "banana" %}
+                    <p class="article-content"><img src="/static/image/banana.jpg" width="60" height="50" ></p>
+                {% elif order.product_name == "iphone" %}
+                    <p class="article-content"><img src="/static/image/iphone.jpg" width="60" height="50"></p>
+                {% endif %}
+                <p class="article-content">Order destination x: {{ order.buyer_x }} </p>
+                <p class="article-content">Order destination y: {{ order.buyer_y }} </p>
+            </article>
+        </div>
+         <a href="{% url 'amazon-home' %}">
+            <button>Back</button>
+        </a>
+    {% endfor %}
+    <br>
+{% else %}
+  <h6>There is no such product.</h6>
+    <div>
+        <a href="{% url 'amazon-home' %}">
+            <button>Back</button>
+        </a>
+
+    </div>
+{% endif %}
+{% endblock content %}

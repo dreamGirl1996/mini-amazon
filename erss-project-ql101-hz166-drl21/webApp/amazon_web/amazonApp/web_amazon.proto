@@ -1,0 +1,20 @@
+syntax = "proto2";
+message OrderInfo{
+    required int64 order_id = 3;
+}
+
+message CustomerUpdateDest{
+    required int32 dest_x = 1;
+    required int32 dest_y = 2;
+    required int64 order_id = 3;
+}
+
+message CancelOrder{
+    required int64 order_id = 1;
+}
+
+message WACommand{
+    repeated OrderInfo create = 1;
+    repeated CustomerUpdateDest changeDst = 2;
+    repeated CancelOrder cancel = 3;
+}

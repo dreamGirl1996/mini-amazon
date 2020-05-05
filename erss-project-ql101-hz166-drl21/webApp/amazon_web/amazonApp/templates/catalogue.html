@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Results: </h2>
+{% if matches|length > 0 %}
+{%  for prod in matches %}
+<div>
+    <article class="content-section">
+        <h2 class="article-title">Product name: {{ prod.product_name }}</h2>
+        <h3>{{ prod.product_desc }}</h3>
+        <form method="get" action="/buy_product/">
+            {% csrf_token %}
+            <input id="prodId" name="prodId" type="hidden" value="{{ prod.prod_id }}">
+            <button type="submit">Select</button>
+        </form>
+
+    </article>
+</div>
+{% endfor %}
+<br>
+{% else %}
+<h6>There are no products matching your search string.</h6>
+<div>
+    <a href="{% url 'amazon-home' %}">
+        <button>Back</button>
+    </a>
+
+</div>
+{% endif %}
+{% endblock content %}

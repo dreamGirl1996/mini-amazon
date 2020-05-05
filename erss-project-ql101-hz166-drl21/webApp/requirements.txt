@@ -1,0 +1,4 @@
+#you also need to sudo apt-get install postgresql libpq-dev 
+psycopg2
+django
+django-crispy-forms

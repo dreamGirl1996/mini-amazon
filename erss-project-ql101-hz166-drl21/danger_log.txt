@@ -1,0 +1,22 @@
+Overview
+This project allow users to register, login, buy products, track package info and view order history
+1. Deal the flakiness of world
+We retransmit unacked messages to avoid letting the world forget our messages. We keep a set off received seqnums to ensure that duplicate messages are only processed once.
+
+2. User Input
+If the user registers with a wrong format email,the user cannot recv the email and the system maybe crashed. In this case, we limit the user input email format
+
+3. Multi-thread
+To make our project more efficient, we pre-create threads to receive msg from world and ups. When new msg comes, there is a thread to handle it. Locks are used to prevent race conditions. 
+
+4. Product
+To avoid user search a invalid product like "absdefe", user could only buy products stored in db before.
+
+5. UPS communication.
+We send pickup request messages whenever our packages are packed. However, we do not assume that the UPS has processed our messages before we begin loading our products onto the truck. Instead we simply let UPS specify the shipids that can be loaded onto each truck.
+
+6. Batched messages
+To reduce the time wasted on socket communication, we batch messages to the world in a data structure. Every few seconds, the data structure is cleared and the batched messages are sent to the world in a single ACommand. A similar policy is used with UPS. 
+
+7. Batched buys
+Instead of issuing buy requests to the world on a per order basis, we simply buy products in bulk whenever warehouse inventory goes below a certain level.

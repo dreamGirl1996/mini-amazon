@@ -1,0 +1,4 @@
+--create table products(productID int PRIMARY KEY, name varchar(128) NOT NULL,  description varchar(1024) NOT NULL);
+--create table wh_contents(whid int, productID int, n int);
+--create table wh_locs(whid int PRIMARY KEY, loc point);
+--COPY products FROM '/docker-entrypoint-intdb.d/products.csv' DELIMITER ',' CSV HEADER;

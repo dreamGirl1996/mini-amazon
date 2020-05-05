@@ -1,0 +1,18 @@
+Added Features:
+1. UI design
+we use crispy form and css to design front end that make page more beautiful and official
+
+2. Send order info email to user
+we will update order information to user through email
+
+3. Order history
+User could view all order detail
+
+4.Caculate the shortest path from warehouse to user location
+We use algorithm to compare the distance between user and different warehouses, and we will choose the nearest warehouse for delivery
+
+5.Show products image
+We store images in db and display products image for front end
+
+6. Ups account validation
+UPS ids specified by the image are validated with the ups server.

@@ -1,0 +1,5 @@
+#run pip3 install global_requirements.txt to try each individual component without docker
+protobuf
+psycopg2
+django
+django-crispy-forms

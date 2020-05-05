@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Past orders</h2>
+{% for object in orders %}
+ <ul class="list-group">
+    <li class="list-group-item">Order Owner: {{ object.user_id }}</li>
+  <li class="list-group-item">Tracking ID: {{ object.ship_id }}</li>
+     <li class="list-group-item">UPS ID: {{ object.ups_id }}</li>
+
+     <li class="list-group-item">Product Name: {{ object.product_name }}</li>
+      <li class="list-group-item">Order Quantity: {{ object.product_num }}</li>
+  <li class="list-group-item">Destination X: {{ object.buyer_x }}</li>
+     <li class="list-group-item">Destination Y: {{ object.buyer_y }}</li>
+  <li class="list-group-item">Order Create Time: {{ object.order_created_time|date:"F d, Y H:i:s"}}</li>
+   <li class="list-group-item">Order Status: {{ object.status }}</li>
+     <br>
+</ul>
+{% endfor %}
+{% endblock content %}
